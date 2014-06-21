@@ -82,6 +82,7 @@ public class Settings {
 
     //appearance
     public boolean logChat = false;
+    public boolean allChatsShowOrigin = true;
     public int chatMax = 100;
     public boolean cleanupChat = true;
     public static String lookAndFeel = "lib.jtattoo.com.jtattoo.plaf.hifi.HiFiLookAndFeel";
@@ -272,6 +273,7 @@ public class Settings {
                 }
                 cleanupChat = Boolean.parseBoolean(p.getProperty("ClearChat", "true"));
                 logChat = Boolean.parseBoolean(p.getProperty("LogChat", "false"));
+                allChatsShowOrigin = Boolean.parseBoolean(p.getProperty("AllChatsOrigin", "true"));
                 chatMax = Integer.parseInt(p.getProperty("MaxChat", "100"));
                 faceMaxHeight = Integer.parseInt(p.getProperty("FaceMaxHeight", "20"));
                 font = Utils.stringToFont(p.getProperty("Font", "Calibri, 18, Plain").split(","));
@@ -320,6 +322,7 @@ public class Settings {
             p.put("FaceMaxHeight", String.valueOf(faceMaxHeight));
             p.put("ClearChat", String.valueOf(cleanupChat));
             p.put("LogChat", String.valueOf(logChat));
+            p.put("AllChatsOrigin", String.valueOf(allChatsShowOrigin));
             p.put("Font", Utils.fontToString(font));
             if (subSound != null) {
                 String toPut = "";

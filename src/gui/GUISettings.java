@@ -158,6 +158,7 @@ public class GUISettings extends JFrame {
 
         //appearance
         GUIMain.currentSettings.logChat = logChatCheck.isSelected();
+        GUIMain.currentSettings.allChatsShowOrigin = allChatsOriginCheck.isSelected();
         GUIMain.currentSettings.chatMax = (int) clearChatSpinner.getValue();
         GUIMain.currentSettings.cleanupChat = clearChatCheck.isSelected();
         String comm = buttonGroup.getSelection().getActionCommand();
@@ -362,7 +363,7 @@ public class GUISettings extends JFrame {
     public void clearChatCheckStateChanged() {
         clearChatSpinner.setEnabled(clearChatCheck.isSelected());
     }
-
+    
     public void changeFontButtonActionPerformed() {
         JFontChooser jfc = new JFontChooser(Constants.fontSizeArray);
         jfc.setSelectedFont(GUIMain.currentSettings.font);
@@ -475,6 +476,7 @@ public class GUISettings extends JFrame {
         label20 = new JLabel();
         clearChatSpinner = new JSpinner();
         logChatCheck = new JCheckBox();
+        allChatsOriginCheck = new JCheckBox();
         label26 = new JLabel();
         label27 = new JLabel();
         currentFontLabel = new JLabel();
@@ -1254,6 +1256,11 @@ public class GUISettings extends JFrame {
                 logChatCheck.setFocusable(false);
                 logChatCheck.setSelected(GUIMain.currentSettings.logChat);
 
+                //---- allChatsOriginCheck ----
+                allChatsOriginCheck.setText("Show Channel Origin in All Chats Tab");
+                allChatsOriginCheck.setFocusable(false);
+                allChatsOriginCheck.setSelected(GUIMain.currentSettings.allChatsShowOrigin);
+
                 //---- label26 ----
                 label26.setText("Appearance");
                 label26.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -1333,6 +1340,9 @@ public class GUISettings extends JFrame {
                                                         .addComponent(logChatCheck))
                                                 .addGroup(chatSettingsPanelLayout.createSequentialGroup()
                                                         .addContainerGap()
+                                                        .addComponent(allChatsOriginCheck))
+                                                .addGroup(chatSettingsPanelLayout.createSequentialGroup()
+                                                        .addContainerGap()
                                                         .addComponent(changeFontButton)))
                                         .addGap(18, 18, 18)
                                         .addComponent(separator1, GroupLayout.PREFERRED_SIZE, 11, GroupLayout.PREFERRED_SIZE)
@@ -1384,6 +1394,8 @@ public class GUISettings extends JFrame {
                                                                 .addComponent(label5))
                                                         .addGap(18, 18, 18)
                                                         .addComponent(logChatCheck)
+                                                        .addGap(8, 8, 8)
+                                                        .addComponent(allChatsOriginCheck)
                                                         .addGap(18, 18, 18)
                                                         .addComponent(label26)
                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1547,6 +1559,8 @@ public class GUISettings extends JFrame {
     public static JLabel label20;
     public static JSpinner clearChatSpinner;
     public static JCheckBox logChatCheck;
+    public static JCheckBox allChatsOriginCheck;
+    public static JCheckBox clearAllchatOriginCheck;
     public static JLabel label26;
     public static JLabel label27;
     public static JLabel currentFontLabel;

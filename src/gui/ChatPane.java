@@ -209,10 +209,11 @@ public class ChatPane {
                 }
             }
             int nameStart = doc.getLength() + 1;
-            if (chan.equalsIgnoreCase("all chats")) {
+            
+            if ( (chan.equalsIgnoreCase("all chats")) && (GUIMain.currentSettings.allChatsShowOrigin) ) { // Check if both are true for showing channel name in All Chats tab.
                 doc.insertString(doc.getLength(), " " + sender, user);
                 doc.insertString(doc.getLength(), " (" + channel.substring(1) + "): ", GUIMain.norm);
-            } else {
+            } else { // I guess we don't wanna! 
                 doc.insertString(doc.getLength(), " " + sender + (!isMe ? ": " : " "), user);
             }
             Utils.handleNames(doc, nameStart, sender, user);
